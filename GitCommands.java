@@ -17,9 +17,25 @@ class GitCommands {
 
     // Command: git status
     public String status() {
-        /**
-         * Create Logic here and run unit testing.
-         */
+        java.util.Set<String> allChanges = new java.util.LinkedHashSet<String>();
+        
+        if (this.staging != null) {
+        allChanges.addAll(this.staging);
+        }
+        if (this.working_directory != null && this.working_directory.new_changes != null) {
+        allChanges.addAll(this.working_directory.new_changes);
+        }
+
+        int total = allChanges.size();
+    
+        StringBuilder sb = new StringBuilder();
+        sb.append("You have ").append(total).append(" change/s.\n");
+
+        for (String path : allChanges) {
+        sb.append(path).append("\n");
+        }
+
+        return sb.toString();
     }
 
     // Command: git add <filename/file directory/wildcard>

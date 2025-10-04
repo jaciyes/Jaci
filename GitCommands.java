@@ -28,14 +28,14 @@ class GitCommands {
 
         int total = allChanges.size();
     
-        StringBuilder sb = new StringBuilder();
-        sb.append("You have ").append(total).append(" change/s.\n");
+        StringBuilder file = new StringBuilder();
+        file.append("You have ").append(total).append(" change/s.\n");
 
         for (String path : allChanges) {
-        sb.append(path).append("\n");
+        file.append(path).append("\n");
         }
 
-        return sb.toString();
+        return file.toString();
     }
 
     // Command: git add <filename/file directory/wildcard>
